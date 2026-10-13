@@ -1,0 +1,9 @@
+# Import metadata read by scripts/import.sh (flat top-level keys).
+# sourceRepo must point at the OCI location the postgres-s390x chart is published to.
+sourceType: "helm-registry"
+name: "postgres-s390x"
+sourceRepo: "oci://registry-1.docker.io/bitnamicharts/postgres-s390x"
+# The import script rewrites these to Quay mirror destinations.
+images:
+  - source: "docker.io/s390x/postgres:17.11"
+    destination: "docker.io/s390x/postgres:17.11"
