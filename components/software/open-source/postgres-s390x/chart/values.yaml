@@ -63,6 +63,11 @@ persistence:
   # storageClass: ""   # e.g. ocs-storagecluster-ceph-rbd
   storageClass: ""
 
+# podSecurityContext is passed by the user at provision time.
+# Set fsGroup to the namespace UID range start so Kubernetes chowns
+# the mounted volume before postgres starts (e.g. fsGroup: 1001570000).
+podSecurityContext: {}
+
 container:
   name: postgres
   resources: {}

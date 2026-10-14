@@ -68,8 +68,8 @@ spec:
       # Ensure the pod is scheduled only on IBM Z / LinuxONE (s390x) nodes
       nodeSelector:
         kubernetes.io/arch: s390x
-      # OpenShift injects fsGroup and runAsUser from the namespace SCC range.
-      # Do not hardcode fsGroup (999) or runAsUser (0) — both are forbidden.
+      # OpenShift assigns fsGroup from the namespace SCC range automatically.
+      # No explicit fsGroup needed — Kubernetes chowns the volume at mount time.
       securityContext: {}
       containers:
         - name: {{ .Values.container.name }}
@@ -102,7 +102,6 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
-              subPath: pgdata
           readinessProbe:
             exec:
               command:
