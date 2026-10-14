@@ -4,16 +4,16 @@
   "title": "PostgreSQL (s390x) Instance Parameters",
   "description": "Parameters for provisioning a PostgreSQL database instance on IBM Z / LinuxONE (s390x)",
   "properties": {
-    "cluster_url": {
+    "instanceName": {
       "type": "string",
-      "description": "Target cluster server URL (optional, defaults to broker's cluster). Must be a registered ArgoCD cluster.",
-      "format": "uri",
-      "pattern": "^https://.*",
-      "examples": [
-        "https://kubernetes.default.svc",
-        "https://192.168.2.89:6443",
-        "https://192.168.2.90:6443"
-      ]
+      "pattern": "^[a-z0-9][a-z0-9\\-]*$"
+    },
+    "clusterTarget": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9\\-]*$"
     },
     "database_name": {
       "type": "string",
@@ -82,6 +82,6 @@
       "examples": ["5Gi", "10Gi", "50Gi", "100Gi"]
     }
   },
-  "required": ["database_name"],
+  "required": ["instanceName", "clusterTarget", "namespace", "database_name"],
   "additionalProperties": false
 }
