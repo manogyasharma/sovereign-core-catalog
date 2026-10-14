@@ -82,6 +82,6 @@
       "examples": ["5Gi", "10Gi", "50Gi", "100Gi"]
     }
   },
-  "required": ["instanceName", "clusterTarget", "namespace", "database_name"],
+  "required": ["instanceName", "clusterTarget", "database_name"],
   "additionalProperties": false
 }
