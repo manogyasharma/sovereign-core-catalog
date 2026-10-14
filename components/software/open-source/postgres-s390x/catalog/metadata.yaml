@@ -1,6 +1,6 @@
 # Import metadata read by scripts/import.sh (flat top-level keys).
 sourceType: "helm-registry"
-name: "postgres-s390x"
+name: "postgressibmz"
 sourceRepo: "oci://quay.io/postgreshelm/postgres-s390x"
 sourceVersion: "1.0.0"
 category: "databases"
