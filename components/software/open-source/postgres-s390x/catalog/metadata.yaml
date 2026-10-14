@@ -2,7 +2,7 @@
 sourceType: "helm-registry"
 name: "postgressibmz"
 sourceRepo: "oci://quay.io/postgreshelm/postgres-s390x"
-sourceVersion: "1.0.0"
+sourceVersion: "1.0.1"
 category: "databases"
 images:
   - source: "docker.io/s390x/postgres:17.11"
