@@ -69,7 +69,6 @@ spec:
       nodeSelector:
         kubernetes.io/arch: s390x
       # OpenShift assigns fsGroup from the namespace SCC range automatically.
-      # No explicit fsGroup needed — Kubernetes chowns the volume at mount time.
       securityContext: {}
       containers:
         - name: {{ .Values.container.name }}
@@ -79,6 +78,8 @@ spec:
             - containerPort: {{ .Values.service.port }}
               name: postgres
           env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
