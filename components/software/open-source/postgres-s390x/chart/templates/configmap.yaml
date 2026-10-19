@@ -1,4 +1,4 @@
-{{- $instanceName := default .Release.Name .Values.instance.name -}}
+{{- $instanceName := include "postgres-s390x.instanceName" . -}}
 {{- $configMapName := printf "postgres-s390x-%s" $instanceName -}}
 {{- $namespace := default .Release.Namespace .Values.namespaceOverride -}}
 apiVersion: v1
@@ -25,8 +25,8 @@ metadata:
     {{- toYaml . | nindent 4 }}
     {{- end }}
 data:
-  database: {{ .Values.auth.database | quote }}
-  username: {{ .Values.auth.username | quote }}
+  database: {{ include "postgres-s390x.database" . | quote }}
+  username: {{ include "postgres-s390x.username" . | quote }}
   {{- range $key, $value := .Values.pgConfig }}
   {{ $key }}: {{ $value | quote }}
   {{- end }}

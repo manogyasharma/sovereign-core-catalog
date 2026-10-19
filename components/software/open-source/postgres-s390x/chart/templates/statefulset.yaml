@@ -1,4 +1,6 @@
-{{- $instanceName := default .Release.Name .Values.instance.name -}}
+{{- $instanceName := include "postgres-s390x.instanceName" . -}}
+{{- $storageClass := include "postgres-s390x.storageClass" . -}}
+{{- $storageSize := include "postgres-s390x.storageSize" . -}}
 {{- $serviceName := printf "postgres-s390x-%s" $instanceName -}}
 {{- $statefulSetName := printf "postgres-s390x-%s" $instanceName -}}
 {{- $secretName := printf "postgres-s390x-%s" $instanceName -}}
@@ -134,12 +136,12 @@ spec:
       spec:
         accessModes:
           {{- toYaml .Values.persistence.accessModes | nindent 10 }}
-        {{- if .Values.persistence.storageClass }}
-        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        {{- if $storageClass }}
+        storageClassName: {{ $storageClass | quote }}
         {{- end }}
         resources:
           requests:
-            storage: {{ .Values.persistence.size }}
+            storage: {{ $storageSize }}
   {{- end }}
 
 

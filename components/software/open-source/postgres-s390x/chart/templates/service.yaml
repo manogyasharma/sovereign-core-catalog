@@ -1,4 +1,4 @@
-{{- $instanceName := default .Release.Name .Values.instance.name -}}
+{{- $instanceName := include "postgres-s390x.instanceName" . -}}
 {{- $serviceName := printf "postgres-s390x-%s" $instanceName -}}
 {{- $namespace := default .Release.Namespace .Values.namespaceOverride -}}
 apiVersion: v1

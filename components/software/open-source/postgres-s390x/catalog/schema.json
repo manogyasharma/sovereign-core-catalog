@@ -8,15 +8,6 @@
       "type": "string",
       "description": "ArgoCD cluster name to deploy to (e.g. claas-api-ocpz-standard-5-b39-cpd2-pok-stglabs-ibm-com)"
     },
-    "cluster_url": {
-      "type": "string",
-      "description": "Target cluster server URL. Must be a registered ArgoCD cluster.",
-      "format": "uri",
-      "pattern": "^https://.*",
-      "examples": [
-        "https://api.ocpz-standard-5.b39-cpd2.pok.stglabs.ibm.com:6443"
-      ]
-    },
     "database_name": {
       "type": "string",
       "description": "Name of the user database to create",
